@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Write_Soccer</title>
+    <link rel="stylesheet" href="WriteSoccer.css">
+</head>
+<body onload="checkAdmin()">
+<figure>
+    <img src="http://thpthungnhan.edu.vn/upload/32756/20180912/banner_THPT_Hung_Nhan22.jpg" alt="THPT Hưng Nhân">
+</figure>
+<div class="menu-bar">
+    <ul>
+        <li id="header"></li>
+        <script src="WriteSoccer.js"></script>
+    </ul>
+</div>
+<br>
+<div>
+    <div class="menu-table1">
+        <table id="table1">
+        <tr>
+            <th colspan="2">ĐIỂM THI HỌC KỲ</th>
+        </tr>
+        <tr>
+            <td><label for="name"></label><input id="name" type="text" placeholder="Họ và tên"></td>
+            <td><label for="date"></label><input id="date" type="text" placeholder="Ngày/Tháng/Năm"></td>
+        </tr>
+        <tr>
+            <td style="font-size: 18px; font-weight: bold">Môn học</td>
+            <td style="font-size: 18px; font-weight: bold">Điểm thi</td>
+        </tr>
+        <tr>
+            <td>Toán</td>
+            <td><label for="diem1"></label><input id="diem1" type="number" placeholder="Điểm"></td>
+        </tr>
+        <tr>
+            <td>Lý</td>
+            <td><label for="diem2"></label><input id="diem2" type="number" placeholder="Điểm"></td>
+        </tr>
+        <tr>
+            <td>Hóa</td>
+            <td><label for="diem3"></label><input id="diem3" type="number" placeholder="Điểm"></td>
+        </tr>
+        <tr>
+            <td>Ngữ Văn</td>
+            <td><label for="diem4"></label><input id="diem4" type="number" placeholder="Điểm"></td>
+        </tr>
+        <tr>
+            <td>Sinh Học</td>
+            <td><label for="diem5"></label><input id="diem5" type="number" placeholder="Điểm"></td>
+        </tr>
+        <tr>
+            <td>Ngoại Ngữ</td>
+            <td><label for="diem6"></label><input id="diem6" type="number" placeholder="Điểm"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="add()">Kết quả</button> </td>
+        </tr>
+        <tr>
+            <td>Điểm trung bình</td>
+            <td id="avg">ĐTB</td>
+        </tr>
+        </table>
+    </div>
+    <div class="menu-table2" onload="display()">
+        <h2>KẾT QUẢ THI HỌC KỲ</h2>
+        <p id="show"></p>
+    </div>
+</div>
+<div class="footer">
+    <p>TRƯỜNG TRUNG HỌC PHỔ THÔNG HƯNG NHÂN<br>
+        Địa chỉ: Thị Trấn Hưng Nhân - Hưng Hà - Thái Bình<br>
+        Điện thoại/Fax: (+84) 02273.862.320<br>
+        Email: thpthungnhantb@gmail.com<br>
+        Website: www.thpthungnhan.edu.vn<br>
+        FB Chanel: www.facebook.com/www.thpthungnhan.edu.vn</p>
+</div>
+</body>
+</html>
