@@ -5,6 +5,7 @@ function login() {
     let password = document.getElementById("password").value
     if (username === usernameAdmin && password === passwordAdmin ){
         alert("Đăng nhập thành công");
+        location.href="WriteSoccer.html";
         localStorage.setItem("username", usernameAdmin)
     } else {
         alert("Đăng nhập thất bại");
