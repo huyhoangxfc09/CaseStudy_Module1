@@ -1,6 +1,6 @@
-class Tablepoint{
+class tablePoint{
     constructor(
-        name, date, diem1, diem2, diem3, diem4, diem5, diem6, avg, rank,
+        name, date, diem1, diem2, diem3, diem4, diem5, diem6, avg, rank,sum
     ) {
         this.name = name;
         this.date = date;
@@ -12,6 +12,7 @@ class Tablepoint{
         this.diem6 = diem6;
         this.avg = avg;
         this.rank = rank;
+        this.sum = sum;
     }
     getName(){
         return this.name;
@@ -86,8 +87,15 @@ class Tablepoint{
     setRank(value){
         this.rank = value;
     }
+    getSum(){
+        return this.sum;
+    }
+
+    setSum(value){
+        this.sum = value;
+    }
 }
-    let Tablepointarr =[];
+    let pointarr =[];
 
     function display(){
         let result = "";
@@ -102,23 +110,25 @@ class Tablepoint{
                 "<th>Ngữ Văn</th>"+
                 "<th>Sinh Học</th>"+
                 "<th>Ngoại Ngữ</th>"+
+                "<th>Tổng điểm</th>"+
                 "<th>Điểm Trung Bình</th>"+
                 "<th>Xếp loại</th>"+
                 "<th colspan='2'>Trạng thái</th>"+
             "</tr>"
-        for (let i =0 ;i <Tablepointarr.length;i++){
+        for (let i =0 ;i <pointarr.length;i++){
             result += "<tr>"+
                             "<td>"+(i+1)+"</td>"+
-                            "<td>"+Tablepointarr[i].getName()+"</td>"+
-                            "<td>"+Tablepointarr[i].getDate()+"</td>"+
-                            "<td>"+Tablepointarr[i].getDiem1()+"</td>"+
-                            "<td>"+Tablepointarr[i].getDiem2()+"</td>"+
-                            "<td>"+Tablepointarr[i].getDiem3()+"</td>"+
-                            "<td>"+Tablepointarr[i].getDiem4()+"</td>"+
-                            "<td>"+Tablepointarr[i].getDiem5()+"</td>"+
-                            "<td>"+Tablepointarr[i].getDiem6()+"</td>"+
-                            "<td>"+Tablepointarr[i].getAvg()+"</td>"+
-                            "<td>"+Tablepointarr[i].getRank()+"</td>"+
+                            "<td>"+pointarr[i].getName()+"</td>"+
+                            "<td>"+pointarr[i].getDate()+"</td>"+
+                            "<td>"+pointarr[i].getDiem1()+"</td>"+
+                            "<td>"+pointarr[i].getDiem2()+"</td>"+
+                            "<td>"+pointarr[i].getDiem3()+"</td>"+
+                            "<td>"+pointarr[i].getDiem4()+"</td>"+
+                            "<td>"+pointarr[i].getDiem5()+"</td>"+
+                            "<td>"+pointarr[i].getDiem6()+"</td>"+
+                            "<td>"+pointarr[i].getSum()+"</td>"+
+                            "<td>"+pointarr[i].getAvg()+"</td>"+
+                            "<td>"+pointarr[i].getRank()+"</td>"+
                             "<td><button onclick='EXIT(" + i + ")'>Edit</button></td>" +
                             "<td><button onclick='DELETE(" + i + ")'>Delete</button></td>" +
                      "</tr>"
@@ -136,12 +146,17 @@ class Tablepoint{
         let diem4 = +document.getElementById('diem4').value;
         let diem5 = +document.getElementById('diem5').value;
         let diem6 = +document.getElementById('diem6').value;
-        let avg = ((diem1 + diem2 + diem3 + diem4 + diem5 + diem6)/6).toFixed(2);
+        let sum = diem1 + diem2 + diem3 + diem4 + diem5 + diem6;
+        let avg = (sum/6).toFixed(2);
         document.getElementById('avg').innerHTML = avg ;
         let rank = "";
-        if (8<=avg){
+        if ((10<avg)||(avg<0)) {
+            alert('Nhập sai điểm. Hãy nhập lại');
+            return;
+        }else if (8<=avg){
             rank ="Giỏi";
         }else if(6.5<=avg){
+
             rank = "Khá";
         }else if(5<=avg){
             rank = "TB";
@@ -150,8 +165,8 @@ class Tablepoint{
         }else if((0<=avg)&&(avg<3)){
             rank = "Kém"
         }
-        let tablepointarr = new Tablepoint(name, date, diem1, diem2, diem3, diem4, diem5, diem6, avg, rank);
-        Tablepointarr.push(tablepointarr);
+        let data1 = new tablePoint(name, date, diem1, diem2, diem3, diem4, diem5, diem6, avg, rank,sum);
+        pointarr.push(data1);
         display();
     }
     function EXIT(index){
@@ -163,10 +178,14 @@ class Tablepoint{
         let diem4 = +document.getElementById('diem4').value;
         let diem5 = +document.getElementById('diem5').value;
         let diem6 = +document.getElementById('diem6').value;
-        let avg = ((diem1 + diem2 + diem3 + diem4 + diem5 + diem6)/6).toFixed(2);
+        let sum = diem1 + diem2 + diem3 + diem4 + diem5 + diem6;
+        let avg = (sum/6).toFixed(2);
         document.getElementById('avg').innerHTML = avg ;
         let rank = "";
-        if (8<=avg){
+        if ((10<avg)||(avg<0)) {
+            alert('Nhập sai điểm. Hãy nhập lại');
+            return;
+        }else if (8<=avg){
             rank ="Giỏi";
         }else if(6.5<=avg){
             rank = "Khá";
@@ -177,18 +196,18 @@ class Tablepoint{
         }else if((0<=avg)&&(avg<3)){
             rank = "Kém"
         }
-        let Newtablepointarr = new Tablepoint(name, date, diem1, diem2, diem3, diem4, diem5, diem6, avg, rank);
-        Tablepointarr[index] = Newtablepointarr;
+        let data2 = new tablePoint(name, date, diem1, diem2, diem3, diem4, diem5, diem6, avg, rank,sum);
+        pointarr[index] = data2;
         display();
     }
     function DELETE(index) {
-    Tablepointarr.splice(index, 1);
+    pointarr.splice(index, 1);
     display()
 }
-let username = localStorage.getItem("username")
-function checkAdmin() {
-    let data = ""
-    if (username === null) {
+    let username = localStorage.getItem("username")
+    function checkAdmin() {
+        let data = ""
+        if (username === null) {
         data += "<div id='admin' style='color: white'><a href='Login.html'>Đăng nhập</a></div>"
         document.getElementById("header").innerHTML = data
         return true;
@@ -199,6 +218,6 @@ function checkAdmin() {
         return false;
     }
 }
-function logout() {
-    localStorage.clear()
+    function logout() {
+        localStorage.clear()
 }
